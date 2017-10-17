@@ -1023,6 +1023,9 @@ function! s:Close()
         " then the current.
         for b in reverse(listed[0:1])
             execute "keepjumps silent b ".b
+            if fnamemodify(bufname(b), ":t") == s:name
+                execute "bd ".b
+            endif
         endfor
     endif
 
